@@ -10,16 +10,12 @@ router.get('/', function(req, res, next) {
 
 /* GET About page. */
 router.get('/about', function(req, res, next) {
-  res.render('index', { 
-    title: 'About', 
-    userName: 'Aaron' });
+  res.render('index', { title: 'About', userName: 'Aaron' });
 });
 
 /* GET Projects page. */
 router.get('/projects', function(req, res, next) {
-  res.render('index', { 
-    title: 'Projects',
-    userName: 'Aaron' });
+  res.render('index', { title: 'Projects', userName: 'Aaron' });
 });
 
 module.exports = router;

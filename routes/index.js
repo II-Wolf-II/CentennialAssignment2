@@ -4,18 +4,27 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { 
-    title: 'Home',
-    userName: 'Aaron'  });
+    title: 'Home Page'});
 });
 
 /* GET About page. */
 router.get('/about', function(req, res, next) {
-  res.render('index', { title: 'About', userName: 'Aaron' });
+  res.render('about', { 
+    title: 'About', 
+    userName: 'Aaron' });
 });
 
 /* GET Projects page. */
 router.get('/projects', function(req, res, next) {
-  res.render('index', { title: 'Projects', userName: 'Aaron' });
+  res.render('projects', { 
+    title: 'Projects',
+    userName: 'Aaron' });
+});
+
+router.get('/contact', function(req, res, next) {
+  res.render('contact', { 
+    title: 'Contact',
+    userName: 'Aaron' });
 });
 
 module.exports = router;

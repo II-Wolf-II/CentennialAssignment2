@@ -1,25 +1,18 @@
-//appuser
-//jVyGcz5am9az7xsV
+// Do not expose your credentials in your code.
+let atlasDB = "mongodb+srv://root:iGPDj4Hb5mdvdyNm@midterm229.qcu2i.mongodb.net/carstore?retryWrites=true&w=majority";
 
-let atlasDB = "mongodb+srv://appuser:jVyGcz5am9az7xsV@cluster004assignment2.hbywg.mongodb.net/test"
-
-let mongoose = require ('mongoose');
+// Database setup
+let mongoose = require('mongoose');
 
 module.exports = function(){
 
-    mongoose.connect(atlasDB, {useNewUrlParser: true});
+    mongoose.connect(atlasDB);
+    let mongodb = mongoose.connection;
 
-    let mongoDb = mongoose.connection;
-
-    mongoDb.on('connected', function() {
-        console.log('database is connected successfully');
-    });
-    mongoDb.on('disconnected',function(){
-        console.log('database is disconnected successfully');
+    mongodb.on('error', console.error.bind(console, 'Connection Error:'));
+    mongodb.once('open', ()=>{
+        console.log('===> Connected to MongoDB.');
     })
-    mongoDb.on('error', console.error.bind(console, 'connection error:'));
-    module.exports = mongoDb;
-    mongoDb.on('error', console.error.bind(console, 'Connection Error: '));
-    
-    return mongoDb;
+
+    return mongodb;
 }
